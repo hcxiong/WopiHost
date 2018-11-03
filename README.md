@@ -1,23 +1,31 @@
-### Introduction
+### 介绍
 
-This repository contains a Wopi Host demo.
-work with Office online 2016(preview). 
-Support DOCX Editing, and also PPTX,XLSX.
-Welcome any contribution, and discussion of supporting coauthoring
+该存储库包含Wopi Host演示
 
-### Requirements
+使用Office online 2016
 
-Requires Office online 2016(preview) server. 
-*No need Microsoft.CobaltCore.dll assembly.*
+支持DOCX编辑，以及PPTX，XLSX
 
-### Known Issues
+### 要求
 
-Doesn't support coauthoring.
+需要Office online 2016服务器
 
-### Usage & Examples
+### 已知的问题
 
-http://[owas.domain]/we/WordEditorFrame.aspx?WOPISrc=http%3a%2f%2flocalhost%3a8080%2fwopi%2ffiles%2fword.docx&access_token=[token]&ui=zh-CN 
+不支持协同操作
 
-http://[owas.domain]/p/PowerPointFrame.aspx?PowerPointView=ReadingView&WOPISrc=http%3a%2f%2flocalhost%3a8080%2fwopi%2ffiles%2fppt.pptx&access_token=[token]&ui=zh-CN 
+中文名称需要注意编码
 
-http://[owas.domain]/x/_layouts/xlviewerinternal.aspx?WOPISrc=http%3a%2f%2flocalhost%3a8080%2fwopi%2ffiles%2fBook1.xlsx&access_token=[token]&ui=zh-CN
+### 用法和例子
+
+http://`{domain}`/we/WordEditorFrame.aspx?WOPISrc=http%3a%2f%2flocalhost%3a800%2fwopi%2ffiles%2f`{word}`.docx&access_token=`{token}`&ui=zh-CN
+
+http://`{domain}`/p/PowerPointFrame.aspx?PowerPointView=ReadingView&WOPISrc=http%3a%2f%2flocalhost%3a800%2fwopi%2ffiles%2f`{ppt}`.pptx&access_token=`{token}`&ui=zh-CN
+
+http://`{domain}`/x/_layouts/xlviewerinternal.aspx?WOPISrc=http%3a%2f%2flocalhost%3a800%2fwopi%2ffiles%2f`{excel}`.xlsx&access_token=`{token}`&ui=zh-CN
+
+### 安装教程
+
+[部署 Office Online Server](https://docs.microsoft.com/zh-cn/officeonlineserver/deploy-office-online-server)
+
+[服务器 Active Directory 域创建](https://www.cnblogs.com/wanggege/p/4605678.html)

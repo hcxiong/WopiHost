@@ -1,14 +1,6 @@
-﻿// Copyright 2014 The Authors Marx-Yu. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+﻿using System.Runtime.Serialization;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
-
-namespace WopiCobaltHost
+namespace WopiHost
 {
     [DataContract]
     public class WopiCheckFileInfo

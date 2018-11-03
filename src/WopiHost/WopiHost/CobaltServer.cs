@@ -1,33 +1,25 @@
-﻿// Copyright 2014 The Authors Marx-Yu. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
-namespace WopiCobaltHost
+namespace WopiHost
 {
     public class CobaltServer
     {
         private HttpListener m_listener;
-        private string m_docsPath;
-        private int m_port;
+        private ConfigManager.Config config;
 
-        public CobaltServer(string docsPath, int port = 8080)
+        public CobaltServer(ConfigManager.Config _config)
         {
-            m_docsPath = docsPath;
-            m_port = port;
+            config = _config;
         }
 
         public void Start()
         {
             m_listener = new HttpListener();
-            m_listener.Prefixes.Add(String.Format("http://localhost:{0}/wopi/", m_port));
+            m_listener.Prefixes.Add(config.url);
             m_listener.Start();
             m_listener.BeginGetContext(ProcessRequest, m_listener);
 
@@ -76,9 +68,9 @@ namespace WopiCobaltHost
                     if (editSession == null)
                     {
                         var fileExt = filename.Substring(filename.LastIndexOf('.') + 1);
-                        editSession = new FileSession(filename, m_docsPath + "/" + filename, @"marx.yu", @"marx yu", @"marx.yuf@gmail.com", false);
-                       
-                         EditSessionManager.Instance.AddSession(editSession);
+                        editSession = new FileSession(filename, config.root.TrimEnd('/') + "/" + filename, config.login, config.name, config.mail, false);
+
+                        EditSessionManager.Instance.AddSession(editSession);
                     }
 
                     if (stringarr.Length == 4 && context.Request.HttpMethod.Equals(@"GET"))

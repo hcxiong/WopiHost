@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 
-namespace WopiCobaltHost
+namespace WopiHost
 {
     abstract public class EditSession
     {

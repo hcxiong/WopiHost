@@ -1,0 +1,18 @@
+{
+  "comment": "comment开头的注释",
+
+  "coment-url": "服务器地址",
+  "url": "http://localhost:800/",
+
+  "coment-root": "文档根目录",
+  "root": "C:/wopi",
+
+  "coment-login": "登录",
+  "login": "netnr",
+
+  "coment-name": "用户名",
+  "name": "netnr",
+
+  "coment-mail": "邮箱",
+  "mail": "netnr@netnr.com"
+}
