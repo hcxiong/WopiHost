@@ -1,20 +1,22 @@
 ### 介绍
 
-该存储库包含Wopi Host演示
+该存储库包含`Wopi Host`演示
 
-使用Office online 2016
-
-支持DOCX编辑，以及PPTX，XLSX
+支持`DOCX`编辑，以及`PPTX`，`XLSX`
 
 ### 要求
 
-需要Office online 2016服务器
+需要`Office Online 2016`服务器
 
-### 已知的问题
+### 注意
 
-不支持协同操作（使用测试，Excel支持协同操作，Word不支持）
+不支持协同操作（使用测试，`Excel支持`协同操作，Word **不** 支持）
 
 中文名称需要注意编码
+
+运行`Wopi Host`需要 **管理员** 
+
+`Wopi Host`可以运行在`Office Online 2016`服务器上，也可以运行在`Web`服务器
 
 ### 用法和例子
 
