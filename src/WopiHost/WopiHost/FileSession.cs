@@ -19,7 +19,7 @@ namespace WopiHost
 
             lock (m_fileinfo)
             {
-                if (m_fileinfo.Exists)
+                if (m_fileinfo.Exists || File.Exists(@m_fileinfo.FullName.ToString()))
                 {
                     cfi.Size = m_fileinfo.Length;
                 }

@@ -18,7 +18,7 @@ namespace WopiHost
                 }
                 set => _url = value;
             }
-            public string root { get; set; } = "C:/wopi";
+            public string root { get; set; }
             public string login { get; set; } = "netnr";
             public string name { get; set; } = "netnr";
             public string mail { get; set; } = "netnr@netnr.com";

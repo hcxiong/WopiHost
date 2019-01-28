@@ -12,8 +12,9 @@ namespace WopiHost
             svr.Start();
 
             Console.WriteLine(cm.config.url);
-            Console.WriteLine("Press any key to quit.");
-            Console.ReadKey();
+
+            Console.WriteLine("Press Enter to quit.");
+            Console.ReadLine();
 
             svr.Stop();
         }

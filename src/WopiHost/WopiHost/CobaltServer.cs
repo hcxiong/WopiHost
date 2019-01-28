@@ -48,6 +48,7 @@ namespace WopiHost
             {
                 HttpListener listener = (HttpListener)result.AsyncState;
                 HttpListenerContext context = listener.EndGetContext(result);
+                Console.WriteLine(DateTime.Now.ToString()+" 访问地址:"+context.Request.Url);
                 try
                 {
                     Console.WriteLine(context.Request.HttpMethod + @" " + context.Request.Url.AbsolutePath);
@@ -61,19 +62,27 @@ namespace WopiHost
                         m_listener.BeginGetContext(ProcessRequest, m_listener);
                         return;
                     }
-
+                    var len = stringarr.Length;
                     var filename = stringarr[3];
+                    var path = context.Request.Url.AbsolutePath;
+                    //取文件真实路径
+                    var newpath = path.Substring(0, path.LastIndexOf("wopi/files/"));
+                    //取文件名加其他参数;
+                    var newpathfilename = path.Substring(path.LastIndexOf("wopi/files/") + "wopi/files/".Length, path.Length - (path.LastIndexOf("wopi/files/") + "wopi/files/".Length));
+                    //分割文件名和参数
+                    var newpathfilenamelist = newpathfilename.Split('/');
+                    //赋值文件名
+                    filename = newpathfilenamelist[0];
                     //use filename as session id just test, recommend use file id and lock id as session id
                     EditSession editSession = EditSessionManager.Instance.GetSession(filename);
                     if (editSession == null)
                     {
                         var fileExt = filename.Substring(filename.LastIndexOf('.') + 1);
-                        editSession = new FileSession(filename, config.root.TrimEnd('/') + "/" + filename, config.login, config.name, config.mail, false);
-
+                        editSession = new FileSession(filename, config.root.TrimEnd('/')+ newpath + filename, config.login, config.name, config.mail, false);
                         EditSessionManager.Instance.AddSession(editSession);
                     }
 
-                    if (stringarr.Length == 4 && context.Request.HttpMethod.Equals(@"GET"))
+                    if (newpathfilename.IndexOf(@"/contents")==-1 && context.Request.HttpMethod.Equals(@"GET"))
                     {
                         //request of checkfileinfo, will be called first
                         var memoryStream = new MemoryStream();
@@ -89,7 +98,7 @@ namespace WopiHost
                         context.Response.OutputStream.Write(jsonResponse, 0, jsonResponse.Length);
                         context.Response.Close();
                     }
-                    else if (stringarr.Length == 5 && stringarr[4].Equals(@"contents"))
+                    else if (newpathfilename.IndexOf(@"/contents")>=0)
                     {
                         // get and put file's content
                         if (context.Request.HttpMethod.Equals(@"POST"))
