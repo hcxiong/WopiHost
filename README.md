@@ -81,7 +81,7 @@ Import-Module -Name OfficeWebApps
 
 ### 第七步：创建Office Online Server场
 ```
-New-OfficeWebAppsFarm -InternalURL "http://oss.com" -AllowHttp -EditingEnabled
+New-OfficeWebAppsFarm -InternalURL "http://oos.com" -AllowHttp -EditingEnabled
 ```
 
 ### 第八步：验证Office Online Server场
