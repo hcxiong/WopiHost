@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace WopiHost
@@ -32,11 +33,15 @@ namespace WopiHost
             var json = ReadText(path);
             if (!string.IsNullOrWhiteSpace(json))
             {
-                MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-                var dcjs = new DataContractJsonSerializer(typeof(Config));
-                var obj = dcjs.ReadObject(ms) as Config;
-
-                config = obj;
+                var jo = JObject.Parse(json);
+                var pis = config.GetType().GetProperties();
+                foreach (var pi in pis)
+                {
+                    if (jo.ContainsKey(pi.Name))
+                    {
+                        pi.SetValue(config, jo[pi.Name].ToString(), null);
+                    }
+                }
             }
         }
 
@@ -60,6 +65,22 @@ namespace WopiHost
             {
             }
             return result;
+        }
+
+        public static string MD5(string s, int len = 32)
+        {
+            string result = "";
+
+            var md5Hasher = new MD5CryptoServiceProvider();
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(s));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sb.Append(data[i].ToString("x2"));
+            }
+            result = sb.ToString();
+
+            return len == 32 ? result : result.Substring(8, 16);
         }
     }
 }

@@ -18,12 +18,17 @@ namespace WopiHost
 
         public void Start()
         {
-            m_listener = new HttpListener();
-            m_listener.Prefixes.Add(config.url);
-            m_listener.Start();
-            m_listener.BeginGetContext(ProcessRequest, m_listener);
-
-            Console.WriteLine(@"WopiServer Started");
+            try
+            {
+                m_listener = new HttpListener();
+                m_listener.Prefixes.Add(config.url);
+                m_listener.Start();
+                m_listener.BeginGetContext(ProcessRequest, m_listener);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
         }
 
         public void Stop()
@@ -48,41 +53,40 @@ namespace WopiHost
             {
                 HttpListener listener = (HttpListener)result.AsyncState;
                 HttpListenerContext context = listener.EndGetContext(result);
-                Console.WriteLine(DateTime.Now.ToString()+" 访问地址:"+context.Request.Url);
+                Console.WriteLine(DateTime.Now.ToString() + " : " + context.Request.Url);
                 try
                 {
-                    Console.WriteLine(context.Request.HttpMethod + @" " + context.Request.Url.AbsolutePath);
-                    var stringarr = context.Request.Url.AbsolutePath.Split('/');
                     var access_token = context.Request.QueryString["access_token"];
 
-                    if (stringarr.Length < 3)
+                    var path = context.Request.Url.AbsolutePath;
+
+                    //虚拟路径
+                    var newpath = path.Replace("wopi/files", "^").Split('^')[1].Replace("/contents", "");
+
+                    var sessionid = ConfigManager.MD5(newpath);
+                    EditSession editSession = EditSessionManager.Instance.GetSession(sessionid);
+
+                    //物理路径
+                    var fullfile = config.root.TrimEnd('/') + newpath;
+
+                    //文件存在
+                    if (File.Exists(fullfile))
+                    {
+                        if (editSession == null)
+                        {
+                            editSession = new FileSession(sessionid, fullfile, config.login, config.name, config.mail, false);
+                            EditSessionManager.Instance.AddSession(editSession);
+                        }
+                    }
+                    else
                     {
                         Console.WriteLine(@"Invalid request");
                         ErrorResponse(context, @"Invalid request parameter");
                         m_listener.BeginGetContext(ProcessRequest, m_listener);
                         return;
                     }
-                    var len = stringarr.Length;
-                    var filename = stringarr[3];
-                    var path = context.Request.Url.AbsolutePath;
-                    //取文件真实路径
-                    var newpath = path.Substring(0, path.LastIndexOf("wopi/files/"));
-                    //取文件名加其他参数;
-                    var newpathfilename = path.Substring(path.LastIndexOf("wopi/files/") + "wopi/files/".Length, path.Length - (path.LastIndexOf("wopi/files/") + "wopi/files/".Length));
-                    //分割文件名和参数
-                    var newpathfilenamelist = newpathfilename.Split('/');
-                    //赋值文件名
-                    filename = newpathfilenamelist[0];
-                    //use filename as session id just test, recommend use file id and lock id as session id
-                    EditSession editSession = EditSessionManager.Instance.GetSession(filename);
-                    if (editSession == null)
-                    {
-                        var fileExt = filename.Substring(filename.LastIndexOf('.') + 1);
-                        editSession = new FileSession(filename, config.root.TrimEnd('/')+ newpath + filename, config.login, config.name, config.mail, false);
-                        EditSessionManager.Instance.AddSession(editSession);
-                    }
 
-                    if (newpathfilename.IndexOf(@"/contents")==-1 && context.Request.HttpMethod.Equals(@"GET"))
+                    if (path.IndexOf(@"/contents") == -1 && context.Request.HttpMethod.Equals(@"GET"))
                     {
                         //request of checkfileinfo, will be called first
                         var memoryStream = new MemoryStream();
@@ -98,7 +102,7 @@ namespace WopiHost
                         context.Response.OutputStream.Write(jsonResponse, 0, jsonResponse.Length);
                         context.Response.Close();
                     }
-                    else if (newpathfilename.IndexOf(@"/contents")>=0)
+                    else if (path.IndexOf(@"/contents") >= 0)
                     {
                         // get and put file's content
                         if (context.Request.HttpMethod.Equals(@"POST"))
