@@ -1,6 +1,6 @@
 ### 介绍
 
-该存储库包含`Wopi Host`演示
+该存储库包含`Wopi Host`演示，及官方提供的示例项目`SampleWopiHandler`，
 
 支持`DOCX`编辑，以及`PPTX`，`XLSX`
 
@@ -14,6 +14,12 @@
 
 `Wopi Host`可以运行在`Office Online 2016`服务器，也可以运行在`Web`服务器
 
+### 更新
+#### [2019-04-01]
+-  更新官方提供的示例版本（ **IIS部署** ），`SampleWopiHandler` ， **推荐使用** 
+- `WopiHost` 项目开始运行正常，隔段时间出现假死的状态，具体原因不知
+- 实测，官方提供的示例版本  **响应速度快**、 **稳定** 
+- <https://github.com/Microsoft/Office-Online-Test-Tools-and-Documentation>
 
 ----------
 
@@ -115,9 +121,6 @@ http://192.168.1.78/x/_layouts/xlviewerinternal.aspx?WOPISrc=http%3a%2f%2flocalh
 `domain` 是域，也可以是IP
 
 ### 截图
-wopi服务截图
-
-![wopi](https://netnr.gitee.io/gs/2018/11/13/70e7521d44.png)
 
 Word截图
 
