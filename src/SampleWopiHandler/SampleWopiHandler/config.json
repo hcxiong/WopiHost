@@ -12,14 +12,5 @@
   //本地物理路径,为空时，默认当前upload文件，如 C:\
   "LocalStoragePath": "",
   //面包屑名称
-  "BreadcrumbBrandName": "",
-
-  //当前用户的一些信息，本应该动态参数，这里直接配置写死
-  //根据这些信息项实现用户授权访问操作
-  //所属ID
-  "OwnerId": "netnr",
-  //用户ID
-  "UserId": "netnr@netnr.com",
-  //用户昵称
-  "UserFriendlyName": "NETNR"
+  "BreadcrumbBrandName": ""
 }

@@ -14,7 +14,7 @@
     <RootNamespace>SampleWopiHandler</RootNamespace>
     <AssemblyName>SampleWopiHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />

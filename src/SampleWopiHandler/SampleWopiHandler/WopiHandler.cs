@@ -89,27 +89,6 @@ namespace SampleWopiHandler
                 return Config["BreadcrumbBrandName"].ToString();
             }
         }
-        private static string OwnerId
-        {
-            get
-            {
-                return Config["OwnerId"].ToString();
-            }
-        }
-        private static string UserId
-        {
-            get
-            {
-                return Config["UserId"].ToString();
-            }
-        }
-        private static string UserFriendlyName
-        {
-            get
-            {
-                return Config["UserFriendlyName"].ToString();
-            }
-        }
 
         private class LockInfo
         {
@@ -364,13 +343,18 @@ namespace SampleWopiHandler
                     return;
                 }
 
+                //用户ID
+                var UserId = context.Request.QueryString["UserId"]?.ToString() ?? Guid.Empty.ToString("N");
+                //用户名
+                var UserName = context.Request.QueryString["UserName"]?.ToString() ?? "";
+
                 // For more info on CheckFileInfoResponse fields, see
                 // https://wopi.readthedocs.io/projects/wopirest/en/latest/files/CheckFileInfo.html#response
                 CheckFileInfoResponse responseData = new CheckFileInfoResponse()
                 {
                     // required CheckFileInfo properties
                     BaseFileName = Path.GetFileName(requestData.FullPath),
-                    OwnerId = OwnerId,
+                    OwnerId = UserId,
                     Size = (int)fileInfo.Length,
                     UserId = UserId,
                     Version = fileInfo.LastWriteTimeUtc.ToString("O" /* ISO 8601 DateTime format string */), // Using the file write time is an arbitrary choice.
@@ -382,7 +366,7 @@ namespace SampleWopiHandler
                     //BreadcrumbBrandUrl = context.Request.Url.Scheme + "://" + context.Request.Url.Host,
                     //BreadcrumbFolderUrl = context.Request.Url.Scheme + "://" + context.Request.Url.Host,
 
-                    UserFriendlyName = UserFriendlyName,
+                    UserFriendlyName = UserName,
 
                     SupportsLocks = true,
                     SupportsUpdate = true,
