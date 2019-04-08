@@ -59,20 +59,26 @@ https://go.microsoft.com/fwlink/p/?LinkId=620071
 https://go.microsoft.com/fwlink/p/?LinkId=620072
 
 ### 第三步：加入域
-> 按要求，AD域服务器是独立的，本实例架设同一台服务器上
-
-简单说明：
+##### 简单说明：
+https://www.cnblogs.com/wanggege/p/4605678.html
 
 添加角色和功能，选择 **Active Directory 域服务** 安装，等待完成，不要关闭，
 点击 **将此服务器提升为域控制器** ，选择 **添加新林** ，输入根域名，如  **`oos.com`**  ，自己随便定义，输入密码，安装，自动重启
-
-帮助文档：https://www.cnblogs.com/wanggege/p/4605678.html
 
 ### 第四步：安装Office Online Server
 没有包可以在，MSDN我告诉你 下载
 ```
 ed2k://|file|cn_office_online_server_last_updated_march_2017_x64_dvd_10245068.iso|730759168|DA70F58CB8FFAF37C02302F2501CE635|/
 ```
+
+##### Office Online Server注意事项：
+https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
+
+- 不要在装SQL Server等服务上运行
+- 不要在端口 80、443 或 809 上安装依赖 Web 服务器 (IIS) 角色的任何服务或角色
+- 不要安装任何版本的 Office
+- 不要在域控制器上安装 Office Online Server
+- 简而言之：一台干净的服务器
 
 ### 第五步：安装语言包
 http://go.microsoft.com/fwlink/p/?LinkId=798136
@@ -125,6 +131,13 @@ http://192.168.1.78/p/PowerPointFrame.aspx?PowerPointView=EditView&WOPISrc=http:
 - WOPISrc参数需要加上`UserId`、`UserName`,表示当前的用户，协同操作，需要url编码
     - 示例：`http://192.168.1.188:78/wopi/files/word.docx?UserId=1&UserName=1`
     - 编码：`http%3A%2F%2F192.168.1.188%3A78%2Fwopi%2Ffiles%2Fword.docx%3FUserId%3D1%26UserName%3D1`
+
+### 命令
+- `Get-OfficeWebAppsFarm` 返回当前服务器所属的 OfficeWebAppsFarm 对象的详细信息
+- `New-OfficeWebAppsFarm` 在本地计算机上创建新 Office Online Server 场
+- `Set-OfficeWebAppsFarm` 配置现有 Office Online Server 场的设置
+- `Remove-OfficeWebAppsMachine` 从 Office Online Server 场中删除现有服务器（删除Farm）
+- 更多命令：<https://docs.microsoft.com/zh-cn/officeonlineserver/windows-powershell-for-office-online-server/windows-powershell-for-office-online-server>
 
 ### 截图
 
