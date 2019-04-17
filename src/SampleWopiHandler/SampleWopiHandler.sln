@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWopiHandler", "SampleWopiHandler\SampleWopiHandler.csproj", "{F501B337-0B6C-41D4-A0E0-9F83B08BA268}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWopiHandler.UnitTests", "SampleWopiHandler.UnitTests\SampleWopiHandler.UnitTests.csproj", "{AA0BB5E6-2D61-4410-9990-DE20E04D8643}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netnr.WopiHandler", "Netnr.WopiHandler\Netnr.WopiHandler.csproj", "{AED8A793-6463-41FD-8AD8-B07C434DF0A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{AA0BB5E6-2D61-4410-9990-DE20E04D8643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA0BB5E6-2D61-4410-9990-DE20E04D8643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA0BB5E6-2D61-4410-9990-DE20E04D8643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {662FD15F-CB0A-4A26-8953-B25F49BC6EB2}
 	EndGlobalSection
 EndGlobal

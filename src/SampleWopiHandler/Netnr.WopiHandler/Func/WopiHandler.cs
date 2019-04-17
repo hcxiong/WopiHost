@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
+using Netnr.Core;
 using Newtonsoft.Json; // For JsonConvert.SerializeObject
 using Newtonsoft.Json.Linq;
 
-namespace SampleWopiHandler
+namespace Netnr.WopiHandler
 {
     /// <summary>
     /// This class implements a simple WOPI handler that allows users to read and write files
@@ -17,78 +18,6 @@ namespace SampleWopiHandler
     /// </remarks>
     public class WopiHandler : IHttpHandler
     {
-        private static JObject Pconfig { get; set; }
-
-        public static JObject Config
-        {
-            get
-            {
-                if (Pconfig == null)
-                {
-                    var path = HttpContext.Current.Server.MapPath("/");
-                    Pconfig = JObject.Parse(FileTo.ReadText(path, "config.json"));
-                }
-                return Pconfig;
-            }
-        }
-
-        private static string WopiPath
-        {
-            get
-            {
-                return Config["WopiPath"].ToString();
-            }
-        }
-        private static string FilesRequestPath
-        {
-            get
-            {
-                return Config["FilesRequestPath"].ToString();
-            }
-        }
-        private static string FoldersRequestPath
-        {
-            get
-            {
-                return Config["FoldersRequestPath"].ToString();
-            }
-        }
-        private static string ContentsRequestPath
-        {
-            get
-            {
-                return Config["ContentsRequestPath"].ToString();
-            }
-        }
-        private static string ChildrenRequestPath
-        {
-            get
-            {
-                return Config["ChildrenRequestPath"].ToString();
-            }
-        }
-        internal static string LocalStoragePath
-        {
-            get
-            {
-                var lsp = Config["LocalStoragePath"].ToString();
-                if (string.IsNullOrWhiteSpace(lsp))
-                {
-                    lsp = AppDomain.CurrentDomain.BaseDirectory.Replace("\\", "/").TrimEnd('/') + "/upload/";
-                }
-                return lsp;
-            }
-        }
-
-
-        private static string BreadcrumbBrandName
-        {
-            get
-            {
-                return Config["BreadcrumbBrandName"].ToString();
-            }
-        }
-
         private class LockInfo
         {
             public string Lock { get; set; }
@@ -116,13 +45,6 @@ namespace SampleWopiHandler
         /// </summary>
         public void ProcessRequest(HttpContext context)
         {
-            if (context.Request.Url.AbsolutePath.TrimEnd('/') + "/" == WopiPath + FilesRequestPath)
-            {
-                context.Response.StatusCode = 404;
-                context.Response.StatusDescription = "path error";
-                return;
-            }
-
             // WOPI ProofKey validation is an optional way that a WOPI host can ensure that the request
             // is coming from the Office Online server that they expect to be talking to.
             if (!ValidateWopiProofKey(context.Request))
@@ -212,21 +134,21 @@ namespace SampleWopiHandler
             // Get request path, e.g. /<...>/wopi/files/<id>
             string requestPath = request.Url.AbsolutePath;
             // remove /<...>/wopi/
-            string wopiPath = requestPath.Substring(WopiPath.Length);
+            string wopiPath = requestPath.Substring(WopiConfig.WopiPath.Length);
 
-            if (wopiPath.StartsWith(FilesRequestPath))
+            if (wopiPath.StartsWith(WopiConfig.FilesRequestPath))
             {
                 // A file-related request
 
                 // remove /files/ from the beginning of wopiPath
-                string rawId = wopiPath.Substring(FilesRequestPath.Length);
+                string rawId = wopiPath.Substring(WopiConfig.FilesRequestPath.Length);
 
-                if (rawId.EndsWith(ContentsRequestPath))
+                if (rawId.EndsWith(WopiConfig.ContentsRequestPath))
                 {
                     // The rawId ends with /contents so this is a request to read/write the file contents
 
                     // Remove /contents from the end of rawId to get the actual file id
-                    requestData.Id = rawId.Substring(0, rawId.Length - ContentsRequestPath.Length);
+                    requestData.Id = rawId.Substring(0, rawId.Length - WopiConfig.ContentsRequestPath.Length);
 
                     if (request.HttpMethod == "GET")
                         requestData.Type = RequestType.GetFile;
@@ -285,19 +207,19 @@ namespace SampleWopiHandler
                     }
                 }
             }
-            else if (wopiPath.StartsWith(FoldersRequestPath))
+            else if (wopiPath.StartsWith(WopiConfig.FoldersRequestPath))
             {
                 // A folder-related request.
 
                 // remove /folders/ from the beginning of wopiPath
-                string rawId = wopiPath.Substring(FoldersRequestPath.Length);
+                string rawId = wopiPath.Substring(WopiConfig.FoldersRequestPath.Length);
 
-                if (rawId.EndsWith(ChildrenRequestPath))
+                if (rawId.EndsWith(WopiConfig.ChildrenRequestPath))
                 {
                     // rawId ends with /children, so it's an EnumerateChildren request.
 
                     // remove /children from the end of rawId
-                    requestData.Id = rawId.Substring(0, rawId.Length - ChildrenRequestPath.Length);
+                    requestData.Id = rawId.Substring(0, rawId.Length - WopiConfig.ChildrenRequestPath.Length);
                     requestData.Type = RequestType.EnumerateChildren;
                 }
                 else
@@ -350,9 +272,9 @@ namespace SampleWopiHandler
                 }
 
                 //用户ID
-                var UserId = context.Request.QueryString["UserId"]?.ToString() ?? Guid.Empty.ToString("N");
+                var UserId = context.Request.QueryString["UserId"] ?? Guid.Empty.ToString("N");
                 //用户名
-                var UserName = context.Request.QueryString["UserName"]?.ToString() ?? "";
+                var UserName = context.Request.QueryString["UserName"] ?? "";
 
                 // For more info on CheckFileInfoResponse fields, see
                 // https://wopi.readthedocs.io/projects/wopirest/en/latest/files/CheckFileInfo.html#response
@@ -366,7 +288,7 @@ namespace SampleWopiHandler
                     Version = fileInfo.LastWriteTimeUtc.ToString("O" /* ISO 8601 DateTime format string */), // Using the file write time is an arbitrary choice.
 
                     // optional CheckFileInfo properties
-                    BreadcrumbBrandName = BreadcrumbBrandName,
+                    BreadcrumbBrandName = WopiConfig.BreadcrumbBrandName,
                     //BreadcrumbFolderName = fileInfo.Directory != null ? fileInfo.Directory.Name : "",
                     //BreadcrumbDocName = Path.GetFileNameWithoutExtension(requestData.FullPath),
                     //BreadcrumbBrandUrl = context.Request.Url.Scheme + "://" + context.Request.Url.Host,
@@ -416,10 +338,10 @@ namespace SampleWopiHandler
 
             try
             {
-                // transmit file from local storage to the response stream.
-                context.Response.TransmitFile(requestData.FullPath);
                 context.Response.AddHeader(WopiHeaders.ItemVersion, GetFileVersion(requestData.FullPath));
+                // transmit file from local storage to the response stream.
                 ReturnSuccess(context.Response);
+                context.Response.TransmitFile(requestData.FullPath);
             }
             catch (UnauthorizedAccessException)
             {

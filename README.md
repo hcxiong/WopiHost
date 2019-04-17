@@ -9,6 +9,10 @@
 - `Wopi Host`可以运行在`Office Online 2016`服务器，也可以运行在`Web`服务器
 
 ### 更新
+#### [2019-04-17]
+- MVC版本，可部署linux服务器（基于 Jexus）
+- 添加一份 接口 文档
+
 #### [2019-04-04]
 - 更新Office Online Server补丁解决一些问题（实现图片上传、查看，word协同、PPT可用）
 

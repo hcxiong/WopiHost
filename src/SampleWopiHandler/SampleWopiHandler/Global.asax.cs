@@ -29,7 +29,7 @@ namespace SampleWopiHandler
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception error = Server.GetLastError().GetBaseException();
-            ConsoleTo.Log(error);
+            ConsoleTo.Log(error, true);
         }
 
         protected void Session_End(object sender, EventArgs e)

@@ -1,0 +1,272 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style type="text/css">
+        table{border-collapse:collapse;border:0;width:100%}table th{font-weight:bold}th,td{padding:6px 13px;border:solid #CCC 1px}pre{background-color:#f6f8fa}.hljs{color:#333;display:block;padding:.5em;overflow-x:auto;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:bold}.hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable,.hljs-tag .hljs-attr{color:teal}.hljs-string,.hljs-doctag{color:#d14}.hljs-title,.hljs-section,.hljs-selector-id{color:#900;font-weight:bold}.hljs-subst{font-weight:normal}.hljs-type,.hljs-class .hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:navy;font-weight:normal}.hljs-regexp,.hljs-link{color:#009926}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
+    </style>
+    <meta name=ProgId content=Word.Document>
+    <meta name=Generator content="Microsoft Word 11">
+    <meta name=Originator content="Microsoft Word 11">
+    <xml><w:WordDocument><w:View>Print</w:View></xml>
+</head>
+<body>
+    <div class="netnrmd-body"><h1>1、说明</h1>
+<p>Office Online Server 2016 + WOPI 实现在线查看、编辑（协同）Word、Excel、PowerPoint文件</p>
+<p>仅支持 docx、xlsx、pptx，不带<code>x</code>格式的文件不支持</p>
+
+<h1>2、WOPI服务</h1>
+<h2>2.1、安装</h2>
+<h3>源码</h3>
+<ul>
+<li><a href="https://github.com/netnr/WopiHost">https://github.com/netnr/WopiHost</a></li>
+<li><a href="https://gitee.com/netnr/WopiHost">https://gitee.com/netnr/WopiHost</a></li>
+</ul>
+<h3>说明</h3>
+<ul>
+<li>基于官方的Demo实现Word、Excel、PowerPoint的查看、编辑（支持协同）</li>
+<li>MVC版本可部署Linux环境（依赖 <a href="https://jexus.org">https://jexus.org</a>）</li>
+</ul>
+<h3>附</h3>
+<ul>
+<li>后面wopi的接口以 <a href="http://wopiserver">http://wopiserver</a> 地址为例</li>
+</ul>
+
+<h2>2.2、配置</h2>
+<p><strong>配置</strong></p>
+<ul>
+<li>修改<code>web.config</code>，设置<code>LocalStoragePath</code>的值等于文档的根目录物理路径
+（如：<code>H:\\IIS\\OA\\</code>）</li>
+<li>默认是WOPI发布文件下upload文件夹，需要修改你对应的物理路径</li>
+<li>其他的项可以不用改</li>
+</ul>
+
+<h2>2.3、得到一个文件的信息</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>得到一个文件的JSON信息</li>
+</ul>
+<p><strong>请求URL：</strong></p>
+<ul>
+<li><code>http://wopiserver/wopi/files/{file}</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">file</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">文件路径，如: <code>upload/2019/04/word.docx</code></td></tr>
+<tr><td style="text-align:left">access_token</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">授权码，未验证可任意传，需要自己实现验证，判断是否有权操作</td></tr>
+<tr><td style="text-align:left">UserId</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">用户ID</td></tr>
+<tr><td style="text-align:left">UserName</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">用户昵称</td></tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code>http:<span class="hljs-comment">//wopiserver/wopi/files/word.docx?access_token=123&amp;UserId=1&amp;UserName=1</span>
+
+{
+  <span class="hljs-string">"BaseFileName"</span>: <span class="hljs-string">"word.docx"</span>,
+  <span class="hljs-string">"OwnerId"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-string">"Size"</span>: <span class="hljs-number">97345</span>,
+  <span class="hljs-string">"UserId"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-string">"Version"</span>: <span class="hljs-string">"2019-04-16T06:49:31.3370155Z"</span>,
+  <span class="hljs-string">"BreadcrumbBrandName"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"BreadcrumbBrandUrl"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">"BreadcrumbFolderName"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">"BreadcrumbFolderUrl"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">"BreadcrumbDocName"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-string">"UserCanWrite"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"ReadOnly"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-string">"SupportsLocks"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"SupportsUpdate"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"UserCanNotWriteRelative"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"UserFriendlyName"</span>: <span class="hljs-string">"1"</span>
+}
+
+http:<span class="hljs-comment">//wopiserver/wopi/files/excel.xlsx?access_token=123&amp;UserId=1&amp;UserName=1</span>
+http:<span class="hljs-comment">//wopiserver/wopi/files/ppt.pptx?access_token=123&amp;UserId=1&amp;UserName=1</span>
+</code></pre>
+<p><strong>备注</strong></p>
+<ul>
+<li>参数 <strong><code>不</code></strong> 支持中文（文件路径、用户昵称等）</li>
+</ul>
+
+<h2>2.4、得到一个文件的内容</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>得到一个文件的内容，浏览器输出显示为乱码</li>
+</ul>
+<p><strong>请求URL：</strong></p>
+<ul>
+<li><code>http://wopiserver/wopi/files/{file}/contents</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">file</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">文件路径，如: <code>upload/2019/04/word.docx</code></td></tr>
+<tr><td style="text-align:left">access_token</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">授权码，未验证可任意传，需要自己实现验证，判断是否有权操作</td></tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code><span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/wopiserver/wopi</span><span class="hljs-regexp">/files/word</span>.docx/contents?access_token=<span class="hljs-number">123</span>
+<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/wopiserver/wopi</span><span class="hljs-regexp">/files/excel</span>.xlsx/contents?access_token=<span class="hljs-number">123</span>
+<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/wopiserver/wopi</span><span class="hljs-regexp">/files/ppt</span>.pptx/contents?access_token=<span class="hljs-number">123</span>
+</code></pre>
+<p><strong>备注</strong></p>
+<ul>
+<li>在文件路径后面加上 <code>/contents</code></li>
+</ul>
+
+
+<h1>3、Office Online Server</h1>
+<h2>3.1、安装</h2>
+<h3>教程</h3>
+<ul>
+<li><a href="https://docs.microsoft.com/zh-cn/officeonlineserver/deploy-office-online-server">https://docs.microsoft.com/zh-cn/officeonlineserver/deploy-office-online-server</a></li>
+<li><a href="https://github.com/netnr/WopiHost">https://github.com/netnr/WopiHost</a></li>
+<li><a href="https://gitee.com/netnr/WopiHost">https://gitee.com/netnr/WopiHost</a></li>
+</ul>
+<h3>说明</h3>
+<ul>
+<li>Office Online Server的安装需要两台服务器，另外一台为AD域</li>
+<li>Office服务器需能访问WOPI服务器（能ping）</li>
+</ul>
+<h3>附</h3>
+<ul>
+<li>后面wopi的接口以 <a href="http://officeserver">http://officeserver</a> 地址为例</li>
+</ul>
+
+<h2>3.2、公共参数</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>公共参数</li>
+</ul>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">WOPISrc</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">WOPI服务得到一个文件信息的接口，且完整编码 <code>encodeURIComponent</code></td></tr>
+<tr><td style="text-align:left">ui</td><td style="text-align:center">否</td><td style="text-align:left">string</td><td style="text-align:left">语言，中文，ui=zh-CN</td></tr>
+</tbody>
+</table>
+<p><strong>参数示例</strong></p>
+<pre><code><span class="hljs-comment"># WOPI服务得到一个文件信息的接口</span>
+<span class="hljs-attribute">http</span>://wopiserver/wopi/files/word.docx?access_token=123&amp;UserId=1&amp;UserName=1
+<span class="hljs-comment"># encodeURIComponent 编码</span>
+<span class="hljs-attribute">WOPISrc</span>=http<span class="hljs-number">%3</span>A<span class="hljs-number">%2</span>F<span class="hljs-number">%2</span>Fwopiserver<span class="hljs-number">%2</span>Fwopi<span class="hljs-number">%2</span>Ffiles<span class="hljs-number">%2</span>Fword.docx<span class="hljs-number">%3</span>Faccess_token<span class="hljs-number">%3</span>D123<span class="hljs-number">%26</span>UserId<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserName<span class="hljs-number">%3</span>D1
+</code></pre>
+
+<h2>3.3、Word的查看、编辑</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>Word的查看、编辑</li>
+</ul>
+<p><strong>请求URL：</strong></p>
+<ul>
+<li><code>http://officeserver/wv/wordviewerframe.aspx</code> （查看）</li>
+<li><code>http://officeserver/wv/WordViewer/request.pdf</code> （查看，生成PDF）</li>
+<li><code>http://officeserver/we/WordEditorFrame.aspx</code> （编辑）</li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">WOPISrc</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">WOPI服务得到一个文件信息的接口，且完整编码 <code>encodeURIComponent</code></td></tr>
+<tr><td style="text-align:left">ui</td><td style="text-align:center">否</td><td style="text-align:left">string</td><td style="text-align:left">语言，中文，ui=zh-CN ，生成PDF接口不传</td></tr>
+<tr><td style="text-align:left">type</td><td style="text-align:center">否</td><td style="text-align:left">string</td><td style="text-align:left">生成PDF接口必填，<code>type=accesspdf</code></td></tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code><span class="hljs-attribute">http</span>://officeserver/we/WordEditorFrame.aspx?ui=zh-CN&amp;WOPISrc=http<span class="hljs-number">%3</span>A<span class="hljs-number">%2</span>F<span class="hljs-number">%2</span>Fwopiserver<span class="hljs-number">%2</span>Fwopi<span class="hljs-number">%2</span>Ffiles<span class="hljs-number">%2</span>Fupload<span class="hljs-number">%2</span>Fdoc<span class="hljs-number">%2</span>F2019<span class="hljs-number">%2</span>F03<span class="hljs-number">%2</span>Fword.docx<span class="hljs-number">%3</span>Faccess_token<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserId<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserName<span class="hljs-number">%3</span>D1
+
+<span class="hljs-attribute">http</span>://officeserver/wv/WordViewer/request.pdf?type=accesspdf&amp;WOPISrc=http<span class="hljs-number">%3</span>A<span class="hljs-number">%2</span>F<span class="hljs-number">%2</span>Fwopiserver<span class="hljs-number">%2</span>Fwopi<span class="hljs-number">%2</span>Ffiles<span class="hljs-number">%2</span>Fupload<span class="hljs-number">%2</span>Fdoc<span class="hljs-number">%2</span>F2019<span class="hljs-number">%2</span>F03<span class="hljs-number">%2</span>Fword.docx<span class="hljs-number">%3</span>Faccess_token<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserId<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserName<span class="hljs-number">%3</span>D1
+</code></pre>
+
+<h2>3.4、Excel的编辑、查看</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>Excel的编辑、查看</li>
+</ul>
+<p><strong>请求URL：</strong></p>
+<ul>
+<li><code>http://officeserver/x/_layouts/xlviewerinternal.aspx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">WOPISrc</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">WOPI服务得到一个文件信息的接口，且完整编码 <code>encodeURIComponent</code></td></tr>
+<tr><td style="text-align:left">ui</td><td style="text-align:center">否</td><td style="text-align:left">string</td><td style="text-align:left">语言，中文，ui=zh-CN</td></tr>
+<tr><td style="text-align:left">edit</td><td style="text-align:center">否</td><td style="text-align:left">int</td><td style="text-align:left">是否编辑，<code>edit=1</code>，表示可编辑</td></tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code><span class="hljs-attribute">http</span>://officeserver/x/_layouts/xlviewerinternal.aspx?ui=zh-CN&amp;WOPISrc=http<span class="hljs-number">%3</span>A<span class="hljs-number">%2</span>F<span class="hljs-number">%2</span>Fwopiserver<span class="hljs-number">%2</span>Fwopi<span class="hljs-number">%2</span>Ffiles<span class="hljs-number">%2</span>Fupload<span class="hljs-number">%2</span>Fdoc<span class="hljs-number">%2</span>F2019<span class="hljs-number">%2</span>F03<span class="hljs-number">%2</span>Fexcel.xlsx<span class="hljs-number">%3</span>Faccess_token<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserId<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserName<span class="hljs-number">%3</span>D1
+</code></pre>
+
+<h2>3.5、PowerPoint编辑、查看</h2>
+<p><strong>简要描述：</strong></p>
+<ul>
+<li>PowerPoint编辑、查看</li>
+</ul>
+<p><strong>请求URL：</strong></p>
+<ul>
+<li><code>http://officeserver/p/PowerPointFrame.aspx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr><th style="text-align:left">参数名</th><th style="text-align:center">必选</th><th style="text-align:left">类型</th><th style="text-align:left">说明</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">WOPISrc</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left">WOPI服务得到一个文件信息的接口，且完整编码 <code>encodeURIComponent</code></td></tr>
+<tr><td style="text-align:left">ui</td><td style="text-align:center">否</td><td style="text-align:left">string</td><td style="text-align:left">语言，中文，ui=zh-CN</td></tr>
+<tr><td style="text-align:left">PowerPointView</td><td style="text-align:center">是</td><td style="text-align:left">string</td><td style="text-align:left"><code>ReadingView</code> 查看，<code>EditView</code> 编辑</td></tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code><span class="hljs-attribute">http</span>://officeserver/p/PowerPointFrame.aspx?ui=zh-CN&amp;PowerPointView=ReadingView&amp;WOPISrc=http<span class="hljs-number">%3</span>A<span class="hljs-number">%2</span>F<span class="hljs-number">%2</span>Fwopiserver<span class="hljs-number">%2</span>Fwopi<span class="hljs-number">%2</span>Ffiles<span class="hljs-number">%2</span>Fupload<span class="hljs-number">%2</span>Fdoc<span class="hljs-number">%2</span>F2019<span class="hljs-number">%2</span>F03<span class="hljs-number">%2</span>Fppt.pptx<span class="hljs-number">%3</span>Faccess_token<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserId<span class="hljs-number">%3</span>D1<span class="hljs-number">%26</span>UserName<span class="hljs-number">%3</span>D1
+</code></pre>
+
+
+<h1>4、附</h1>
+<h3>注意</h3>
+<ul>
+<li>中文文件名、参数中文等问题需要注意</li>
+</ul>
+
+</div>
+</body>
+</html>

@@ -53,6 +53,12 @@
     <Compile Include="ProofKeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleWopiHandler\SampleWopiHandler.csproj">
+      <Project>{f501b337-0b6c-41d4-a0e0-9f83b08ba268}</Project>
+      <Name>SampleWopiHandler</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
