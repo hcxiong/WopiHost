@@ -112,29 +112,11 @@ https://github.com/netnr/WopiHost
 
 https://gitee.com/netnr/WopiHost
 
-启动服务，更改config.json里面的配置
+启动服务，更改配置
 
 ### 第十步：使用
-```
-编辑word
-http://192.168.1.78/we/WordEditorFrame.aspx?WOPISrc=http://192.168.1.188:78/wopi/files/word.docx&ui=zh-CN&access_token=123456
-查看word
-http://192.168.1.78/wv/wordviewerframe.aspx?WOPISrc=http://192.168.1.188:78/wopi/files/word.docx&ui=zh-CN&access_token=123456
-查看excel
-http://192.168.1.78/x/_layouts/xlviewerinternal.aspx?WOPISrc=http://192.168.1.188:78/wopi/files/excel.xlsx&ui=zh-CN&access_token=123456
-编辑excel
-http://192.168.1.78/x/_layouts/xlviewerinternal.aspx?edit=1&WOPISrc=http://192.168.1.188:78/wopi/files/excel.xlsx&ui=zh-CN&access_token=123456
-查看ppt
-http://192.168.1.78/p/PowerPointFrame.aspx?PowerPointView=ReadingView&WOPISrc=http://192.168.1.188:78/wopi/files/ppt.pptx&ui=zh-CN&access_token=123456
-编辑ppt
-http://192.168.1.78/p/PowerPointFrame.aspx?PowerPointView=EditView&WOPISrc=http://192.168.1.188:78/wopi/files/ppt.pptx&ui=zh-CN&access_token=123456
-```
-- office服务地址可以是IP，也可是创建Office Online Server场指定的 **InternalURL**  ：`http://oos.com`
-- `192.168.1.78` 是 office服务的IP地址，`192.168.1.188` 是 wopi服务，你得保证office服务器能访问wopi服务的地址
-- token参数，用于授权验证，需要wopi服务里面实现
-- WOPISrc参数需要加上`UserId`、`UserName`,表示当前的用户，协同操作，需要url编码
-    - 示例：`http://192.168.1.188:78/wopi/files/word.docx?UserId=1&UserName=1`
-    - 编码：`http%3A%2F%2F192.168.1.188%3A78%2Fwopi%2Ffiles%2Fword.docx%3FUserId%3D1%26UserName%3D1`
+- [OfficeOnlineServer使用文档](https://www.netnr.com/doc/code/4964095842855914510)
+- WopiHost 项目 `doc/OfficeOnlineServer.doc`
 
 ### 命令
 - `Get-OfficeWebAppsFarm` 返回当前服务器所属的 OfficeWebAppsFarm 对象的详细信息
