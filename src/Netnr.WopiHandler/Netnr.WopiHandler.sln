@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netnr.WopiHandler", "Netnr.WopiHandler\Netnr.WopiHandler.csproj", "{AED8A793-6463-41FD-8AD8-B07C434DF0A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED8A793-6463-41FD-8AD8-B07C434DF0A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE91CAB5-5C82-4306-88DD-5D2CB5885577}
+	EndGlobalSection
+EndGlobal

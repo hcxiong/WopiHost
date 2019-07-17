@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Web;
 
-namespace SampleWopiHandler
+namespace Netnr.WopiHandler
 {
-    /// <summary>
-    /// 输出
-    /// </summary>
     public class ConsoleTo
     {
         /// <summary>
@@ -27,8 +28,8 @@ namespace SampleWopiHandler
         {
             var dt = DateTime.Now;
             var path = "/logs/" + dt.ToString("yyyyMM") + "/";
-            path = System.Web.HttpContext.Current.Server.MapPath(path);
-            FileTo.WriteText(msg, path, "console_" + dt.ToString("yyyyMMdd") + ".log");
+            path = HttpContext.Current.Server.MapPath(path);
+            WriteText(msg, path, "console_" + dt.ToString("yyyyMMdd") + ".log");
         }
 
         /// <summary>
@@ -59,6 +60,44 @@ namespace SampleWopiHandler
             }
 
             return msg;
+        }
+
+        /// <summary>
+        /// 流写入
+        /// </summary>
+        /// <param name="content">内容</param>
+        /// <param name="path">物理目录</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="isAppend">默认追加，false覆盖</param>
+        public static void WriteText(string content, string path, string fileName, bool isAppend = true)
+        {
+            FileStream fs;
+
+            //检测目录
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                fs = new FileStream(path + fileName, FileMode.Create);
+            }
+            else
+            {
+                //文件是否存在 创建 OR 追加
+                if (!File.Exists(path + fileName))
+                {
+                    fs = new FileStream(path + fileName, FileMode.Create);
+                }
+                else
+                {
+                    FileMode fm = isAppend ? FileMode.Append : FileMode.Truncate;
+                    fs = new FileStream(path + fileName, fm);
+                }
+            }
+
+            //流写入
+            StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+            sw.WriteLine(content);
+            sw.Close();
+            fs.Close();
         }
     }
 }

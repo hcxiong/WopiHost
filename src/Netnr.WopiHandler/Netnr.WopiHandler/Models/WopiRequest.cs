@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace SampleWopiHandler
+namespace Netnr.WopiHandler
 {
     enum RequestType
     {
@@ -54,7 +54,33 @@ namespace SampleWopiHandler
 
         public string FullPath
         {
-            get { return Path.Combine(WopiHandler.LocalStoragePath, Id); }
+            get { return System.Web.HttpUtility.UrlDecode(Path.Combine(WopiConfig.LocalStoragePath, Id)); }
+        }
+
+        private string _UserId;
+        public string UserId
+        {
+            get
+            {
+                return System.Web.HttpUtility.UrlDecode(_UserId);
+            }
+            set
+            {
+                _UserId = value;
+            }
+        }
+
+        private string _UserName;
+        public string UserName
+        {
+            get
+            {
+                return System.Web.HttpUtility.UrlDecode(_UserName);
+            }
+            set
+            {
+                _UserName = value;
+            }
         }
     }
 }

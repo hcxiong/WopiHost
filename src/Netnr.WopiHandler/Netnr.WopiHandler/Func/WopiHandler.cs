@@ -120,8 +120,10 @@ namespace Netnr.WopiHandler
             WopiRequest requestData = new WopiRequest()
             {
                 Type = RequestType.None,
-                AccessToken = request.QueryString["access_token"],
-                Id = ""
+                AccessToken = request.QueryString["access_token"] ?? Guid.NewGuid().ToString("N"),
+                Id = Guid.NewGuid().ToString("N"),
+                UserId = request.QueryString["UserId"]?.ToString() ?? "0",
+                UserName = request.QueryString["UserName"]?.ToString() ?? "Hi"
             };
 
             // request.Url pattern:
@@ -271,20 +273,15 @@ namespace Netnr.WopiHandler
                     return;
                 }
 
-                //用户ID
-                var UserId = context.Request.QueryString["UserId"] ?? Guid.Empty.ToString("N");
-                //用户名
-                var UserName = context.Request.QueryString["UserName"] ?? "";
-
                 // For more info on CheckFileInfoResponse fields, see
                 // https://wopi.readthedocs.io/projects/wopirest/en/latest/files/CheckFileInfo.html#response
                 CheckFileInfoResponse responseData = new CheckFileInfoResponse()
                 {
                     // required CheckFileInfo properties
                     BaseFileName = Path.GetFileName(requestData.FullPath),
-                    OwnerId = UserId,
+                    OwnerId = requestData.UserId,
                     Size = (int)fileInfo.Length,
-                    UserId = UserId,
+                    UserId = requestData.UserId,
                     Version = fileInfo.LastWriteTimeUtc.ToString("O" /* ISO 8601 DateTime format string */), // Using the file write time is an arbitrary choice.
 
                     // optional CheckFileInfo properties
@@ -294,7 +291,7 @@ namespace Netnr.WopiHandler
                     //BreadcrumbBrandUrl = context.Request.Url.Scheme + "://" + context.Request.Url.Host,
                     //BreadcrumbFolderUrl = context.Request.Url.Scheme + "://" + context.Request.Url.Host,
 
-                    UserFriendlyName = UserName,
+                    UserFriendlyName = requestData.UserName,
 
                     SupportsLocks = true,
                     SupportsUpdate = true,
@@ -309,8 +306,9 @@ namespace Netnr.WopiHandler
                 context.Response.Write(jsonString);
                 ReturnSuccess(context.Response);
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
+                ConsoleTo.Log(ex);
                 ReturnFileUnknown(context.Response);
             }
         }
@@ -343,12 +341,14 @@ namespace Netnr.WopiHandler
                 ReturnSuccess(context.Response);
                 context.Response.TransmitFile(requestData.FullPath);
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
+                ConsoleTo.Log(ex);
                 ReturnFileUnknown(context.Response);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
+                ConsoleTo.Log(ex);
                 ReturnFileUnknown(context.Response);
             }
         }
@@ -418,12 +418,14 @@ namespace Netnr.WopiHandler
                 }
                 context.Response.AddHeader(WopiHeaders.ItemVersion, GetFileVersion(requestData.FullPath));
             }
-            catch (UnauthorizedAccessException)
+            catch (UnauthorizedAccessException ex)
             {
+                ConsoleTo.Log(ex);
                 ReturnFileUnknown(context.Response);
             }
-            catch (IOException)
+            catch (IOException ex)
             {
+                ConsoleTo.Log(ex);
                 ReturnServerError(context.Response);
             }
         }

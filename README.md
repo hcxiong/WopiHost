@@ -1,26 +1,25 @@
 ### 介绍
-- 该存储库包含`Wopi Host`演示，及官方提供的示例项目`SampleWopiHandler`，
 - 支持`DOCX`编辑，以及`PPTX`，`XLSX`
 - 支持协同操作（Word、Excel、 PowerPoint）
-
-### 注意
-- 中文名称需要注意编码，(未实现)
-- 运行`Wopi Host`需要 **管理员** 
-- `Wopi Host`可以运行在`Office Online 2016`服务器，也可以运行在`Web`服务器
-
-### 更新
-#### [2019-04-17]
-- MVC版本，可部署linux服务器（基于 Jexus）
-- 添加一份 接口 文档
-
-#### [2019-04-04]
-- 更新Office Online Server补丁解决一些问题（实现图片上传、查看，word协同、PPT可用）
-
-#### [2019-04-01]
--  更新官方提供的示例版本（ **IIS部署** ），`SampleWopiHandler` ， **推荐使用** 
-- `WopiHost` 项目开始运行正常，隔段时间出现假死的状态，具体原因不知
-- 实测，官方提供的示例版本  **响应速度快**、 **稳定** 
+- 基于微软提供的示例稍稍调整
 - <https://github.com/Microsoft/Office-Online-Test-Tools-and-Documentation>
+
+### 调整
+- 提取参数到`web.config`，方便配置
+- 支持linux部署，基于jexus
+- 支持中文参数
+- 添加错误日志输出
+
+### 说明
+- 中文参数需先编码再传参数，`WOPISrc`参数再整体编码，即`编码两次`
+- 文档根目录需要赋予`读写权限`
+- 保存有延时，约30秒左右
+
+### 参数
+- 参数`access_token`为授权验证，需自己实现（协同针对同一token？应该是）
+- 参数`UserId`为账号
+- 参数`UserName`为姓名
+- 参数是中文都需二次编码
 
 ----------
 
@@ -129,8 +128,8 @@ https://gitee.com/netnr/WopiHost
 
 Word截图
 
-![word](https://netnr.gitee.io/gs/2018/11/13/593bab5043.png)
+![word](https://static.netnr.com/2018/11/13/593bab5043.png)
 
 Excel截图
 
-![excel](https://netnr.gitee.io/gs/2018/11/13/852ec9c947.png)
+![excel](https://static.netnr.com/2018/11/13/852ec9c947.png)
