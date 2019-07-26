@@ -1,49 +1,49 @@
-### ½éÉÜ
-- Ö§³Ö`DOCX`±à¼­£¬ÒÔ¼°`PPTX`£¬`XLSX`
-- Ö§³ÖĞ­Í¬²Ù×÷£¨Word¡¢Excel¡¢ PowerPoint£©
-- »ùÓÚÎ¢ÈíÌá¹©µÄÊ¾ÀıÉÔÉÔµ÷Õû
+### ä»‹ç»
+- æ”¯æŒ`DOCX`ç¼–è¾‘ï¼Œä»¥åŠ`PPTX`ï¼Œ`XLSX`
+- æ”¯æŒååŒæ“ä½œï¼ˆWordã€Excelã€ PowerPointï¼‰
+- åŸºäºå¾®è½¯æä¾›çš„ç¤ºä¾‹ç¨ç¨è°ƒæ•´
 - <https://github.com/Microsoft/Office-Online-Test-Tools-and-Documentation>
 
-### µ÷Õû
-- ÌáÈ¡²ÎÊıµ½`web.config`£¬·½±ãÅäÖÃ
-- Ö§³Ölinux²¿Êğ£¬»ùÓÚjexus
-- Ö§³ÖÖĞÎÄ²ÎÊı
-- Ìí¼Ó´íÎóÈÕÖ¾Êä³ö
+### è°ƒæ•´
+- æå–å‚æ•°åˆ°`web.config`ï¼Œæ–¹ä¾¿é…ç½®
+- æ”¯æŒlinuxéƒ¨ç½²ï¼ŒåŸºäºjexus
+- æ”¯æŒä¸­æ–‡å‚æ•°
+- æ·»åŠ é”™è¯¯æ—¥å¿—è¾“å‡º
 
-### ËµÃ÷
-- ÖĞÎÄ²ÎÊıĞèÏÈ±àÂëÔÙ´«²ÎÊı£¬`WOPISrc`²ÎÊıÔÙÕûÌå±àÂë£¬¼´`±àÂëÁ½´Î`
-- ÎÄµµ¸ùÄ¿Â¼ĞèÒª¸³Óè`¶ÁĞ´È¨ÏŞ`
-- ±£´æÓĞÑÓÊ±£¬Ô¼30Ãë×óÓÒ
+### è¯´æ˜
+- ä¸­æ–‡å‚æ•°éœ€å…ˆç¼–ç å†ä¼ å‚æ•°ï¼Œ`WOPISrc`å‚æ•°å†æ•´ä½“ç¼–ç ï¼Œå³`ç¼–ç ä¸¤æ¬¡`
+- æ–‡æ¡£æ ¹ç›®å½•éœ€è¦èµ‹äºˆ`è¯»å†™æƒé™`
+- ä¿å­˜æœ‰å»¶æ—¶ï¼Œçº¦30ç§’å·¦å³
 
-### ²ÎÊı
-- ²ÎÊı`access_token`ÎªÊÚÈ¨ÑéÖ¤£¬Ğè×Ô¼ºÊµÏÖ£¨Ğ­Í¬Õë¶ÔÍ¬Ò»token£¿Ó¦¸ÃÊÇ£©
-- ²ÎÊı`UserId`ÎªÕËºÅ
-- ²ÎÊı`UserName`ÎªĞÕÃû
-- ²ÎÊıÊÇÖĞÎÄ¶¼Ğè¶ş´Î±àÂë
+### å‚æ•°
+- å‚æ•°`access_token`ä¸ºæˆæƒéªŒè¯ï¼Œéœ€è‡ªå·±å®ç°ï¼ˆååŒé’ˆå¯¹åŒä¸€tokenï¼Ÿåº”è¯¥æ˜¯ï¼‰
+- å‚æ•°`UserId`ä¸ºè´¦å·
+- å‚æ•°`UserName`ä¸ºå§“å
+- å‚æ•°æ˜¯ä¸­æ–‡éƒ½éœ€äºŒæ¬¡ç¼–ç 
 
 ----------
 
-> °²×°½Ì³Ì£ºhttps://docs.microsoft.com/zh-cn/officeonlineserver/deploy-office-online-server
+> å®‰è£…æ•™ç¨‹ï¼šhttps://docs.microsoft.com/zh-cn/officeonlineserver/deploy-office-online-server
 
-> °²×°¹ı³ÌÖĞ£¬±£Ö¤ **Windows Update** ·şÎñ¿ÉÓÃ
+> å®‰è£…è¿‡ç¨‹ä¸­ï¼Œä¿è¯ **Windows Update** æœåŠ¡å¯ç”¨
 
-> Í¨¹ıÔ¶³Ì·ÃÎÊ·şÎñÆ÷°²×°Ê±£¬²»ÄÜÍ¨¹ı×ÊÔ´¹²Ïí´ÅÅÌµÄ·½Ê½Ö±½ÓÔËĞĞ£¬µ«¿ÉÒÔÍ¨¹ı¹²ÏíÅÌ·ûµÄ·½Ê½ÔËĞĞ£¬Èç`\\192.168.1.188\G$`
+> é€šè¿‡è¿œç¨‹è®¿é—®æœåŠ¡å™¨å®‰è£…æ—¶ï¼Œä¸èƒ½é€šè¿‡èµ„æºå…±äº«ç£ç›˜çš„æ–¹å¼ç›´æ¥è¿è¡Œï¼Œä½†å¯ä»¥é€šè¿‡å…±äº«ç›˜ç¬¦çš„æ–¹å¼è¿è¡Œï¼Œå¦‚`\\192.168.1.188\G$`
 
-> Server2012 R2 ÒÔÉÏ£¬±¾´ÎÒÔServer2016ÎªÀı
+> Server2012 R2 ä»¥ä¸Šï¼Œæœ¬æ¬¡ä»¥Server2016ä¸ºä¾‹
 
-> ÔËĞĞ`PowerShell`£¬ÓÉÓÚÊÇ·şÎñÆ÷£¬Ä¬ÈÏAdministratorÕËºÅÎª **¹ÜÀíÔ±** 
+> è¿è¡Œ`PowerShell`ï¼Œç”±äºæ˜¯æœåŠ¡å™¨ï¼Œé»˜è®¤Administratorè´¦å·ä¸º **ç®¡ç†å‘˜** 
 
-### µÚÒ»²½£º½ÇÉ«ºÍ·şÎñ
+### ç¬¬ä¸€æ­¥ï¼šè§’è‰²å’ŒæœåŠ¡
 
 Windows Server 2012 R2:
 ```
 Add-WindowsFeature Web-Server,Web-Mgmt-Tools,Web-Mgmt-Console,Web-WebServer,Web-Common-Http,Web-Default-Doc,Web-Static-Content,Web-Performance,Web-Stat-Compression,Web-Dyn-Compression,Web-Security,Web-Filtering,Web-Windows-Auth,Web-App-Dev,Web-Net-Ext45,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,InkandHandwritingServices,NET-Framework-Features,NET-Framework-Core,NET-HTTP-Activation,NET-Non-HTTP-Activ,NET-WCF-HTTP-Activation45,Windows-Identity-Foundation,Server-Media-Foundation
 ```
-Windows Server 2016£º
+Windows Server 2016ï¼š
 ```
 Add-WindowsFeature Web-Server,Web-Mgmt-Tools,Web-Mgmt-Console,Web-WebServer,Web-Common-Http,Web-Default-Doc,Web-Static-Content,Web-Performance,Web-Stat-Compression,Web-Dyn-Compression,Web-Security,Web-Filtering,Web-Windows-Auth,Web-App-Dev,Web-Net-Ext45,Web-Asp-Net45,Web-ISAPI-Ext,Web-ISAPI-Filter,Web-Includes,NET-Framework-Features,NET-Framework-45-Features,NET-Framework-Core,NET-Framework-45-Core,NET-HTTP-Activation,NET-Non-HTTP-Activ,NET-WCF-HTTP-Activation45,Windows-Identity-Foundation,Server-Media-Foundation
 ```
-### µÚ¶ş²½£º»·¾³ÒÀÀµ
+### ç¬¬äºŒæ­¥ï¼šç¯å¢ƒä¾èµ–
 
  **.NET Framework 4.5.2** 
 
@@ -61,75 +61,75 @@ https://go.microsoft.com/fwlink/p/?LinkId=620071
 
 https://go.microsoft.com/fwlink/p/?LinkId=620072
 
-### µÚÈı²½£º¼ÓÈëÓò
-##### ¼òµ¥ËµÃ÷£º
+### ç¬¬ä¸‰æ­¥ï¼šåŠ å…¥åŸŸ
+##### ç®€å•è¯´æ˜ï¼š
 https://www.cnblogs.com/wanggege/p/4605678.html
 
-Ìí¼Ó½ÇÉ«ºÍ¹¦ÄÜ£¬Ñ¡Ôñ **Active Directory Óò·şÎñ** °²×°£¬µÈ´ıÍê³É£¬²»Òª¹Ø±Õ£¬
-µã»÷ **½«´Ë·şÎñÆ÷ÌáÉıÎªÓò¿ØÖÆÆ÷** £¬Ñ¡Ôñ **Ìí¼ÓĞÂÁÖ** £¬ÊäÈë¸ùÓòÃû£¬Èç  **`oos.com`**  £¬×Ô¼ºËæ±ã¶¨Òå£¬ÊäÈëÃÜÂë£¬°²×°£¬×Ô¶¯ÖØÆô
+æ·»åŠ è§’è‰²å’ŒåŠŸèƒ½ï¼Œé€‰æ‹© **Active Directory åŸŸæœåŠ¡** å®‰è£…ï¼Œç­‰å¾…å®Œæˆï¼Œä¸è¦å…³é—­ï¼Œ
+ç‚¹å‡» **å°†æ­¤æœåŠ¡å™¨æå‡ä¸ºåŸŸæ§åˆ¶å™¨** ï¼Œé€‰æ‹© **æ·»åŠ æ–°æ—** ï¼Œè¾“å…¥æ ¹åŸŸåï¼Œå¦‚  **`oos.com`**  ï¼Œè‡ªå·±éšä¾¿å®šä¹‰ï¼Œè¾“å…¥å¯†ç ï¼Œå®‰è£…ï¼Œè‡ªåŠ¨é‡å¯
 
-### µÚËÄ²½£º°²×°Office Online Server
-Ã»ÓĞ°ü¿ÉÒÔÔÚ£¬MSDNÎÒ¸æËßÄã ÏÂÔØ
+### ç¬¬å››æ­¥ï¼šå®‰è£…Office Online Server
+æ²¡æœ‰åŒ…å¯ä»¥åœ¨ï¼ŒMSDNæˆ‘å‘Šè¯‰ä½  ä¸‹è½½
 ```
 ed2k://|file|cn_office_online_server_last_updated_march_2017_x64_dvd_10245068.iso|730759168|DA70F58CB8FFAF37C02302F2501CE635|/
 ```
 
-##### Office Online Server×¢ÒâÊÂÏî£º
+##### Office Online Serveræ³¨æ„äº‹é¡¹ï¼š
 https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 
-- ²»ÒªÔÚ×°SQL ServerµÈ·şÎñÉÏÔËĞĞ
-- ²»ÒªÔÚ¶Ë¿Ú 80¡¢443 »ò 809 ÉÏ°²×°ÒÀÀµ Web ·şÎñÆ÷ (IIS) ½ÇÉ«µÄÈÎºÎ·şÎñ»ò½ÇÉ«
-- ²»Òª°²×°ÈÎºÎ°æ±¾µÄ Office
-- ²»ÒªÔÚÓò¿ØÖÆÆ÷ÉÏ°²×° Office Online Server
-- ¼ò¶øÑÔÖ®£ºÒ»Ì¨¸É¾»µÄ·şÎñÆ÷
+- ä¸è¦åœ¨è£…SQL Serverç­‰æœåŠ¡ä¸Šè¿è¡Œ
+- ä¸è¦åœ¨ç«¯å£ 80ã€443 æˆ– 809 ä¸Šå®‰è£…ä¾èµ– Web æœåŠ¡å™¨ (IIS) è§’è‰²çš„ä»»ä½•æœåŠ¡æˆ–è§’è‰²
+- ä¸è¦å®‰è£…ä»»ä½•ç‰ˆæœ¬çš„ Office
+- ä¸è¦åœ¨åŸŸæ§åˆ¶å™¨ä¸Šå®‰è£… Office Online Server
+- ç®€è€Œè¨€ä¹‹ï¼šä¸€å°å¹²å‡€çš„æœåŠ¡å™¨
 
-### µÚÎå²½£º°²×°ÓïÑÔ°ü
+### ç¬¬äº”æ­¥ï¼šå®‰è£…è¯­è¨€åŒ…
 http://go.microsoft.com/fwlink/p/?LinkId=798136
 
-### ´ò¸ö²¹¶¡ÔÙ¼ÌĞø
+### æ‰“ä¸ªè¡¥ä¸å†ç»§ç»­
 <https://download.microsoft.com/download/6/B/D/6BD1D664-1212-4AB2-9BE8-447731F2CA0E/wacserver2016-kb4011025-fullfile-x64-glb.exe>
 
-### µÚÁù²½£ºµ¼ÈëOfficeWebApps Ä£¿é
+### ç¬¬å…­æ­¥ï¼šå¯¼å…¥OfficeWebApps æ¨¡å—
 ```
 Import-Module -Name OfficeWebApps
 ```
 
-### µÚÆß²½£º´´½¨Office Online Server³¡
+### ç¬¬ä¸ƒæ­¥ï¼šåˆ›å»ºOffice Online Serveråœº
 ```
 New-OfficeWebAppsFarm -InternalURL "http://oos.com" -AllowHttp -EditingEnabled
 ```
 
-### µÚ°Ë²½£ºÑéÖ¤Office Online Server³¡
-http://oos.com/hosting/discovery	ÓòµÄ·½Ê½·ÃÎÊ£¬ĞèÒª·ÃÎÊµÄ¿Í»§¶Ë¼ÓÈëÓò
+### ç¬¬å…«æ­¥ï¼šéªŒè¯Office Online Serveråœº
+http://oos.com/hosting/discovery	åŸŸçš„æ–¹å¼è®¿é—®ï¼Œéœ€è¦è®¿é—®çš„å®¢æˆ·ç«¯åŠ å…¥åŸŸ
 
-http://localhost/hosting/discovery	±¾µØ·ÃÎÊ
+http://localhost/hosting/discovery	æœ¬åœ°è®¿é—®
 
-http://192.168.1.78/hosting/discovery	IP·ÃÎÊ	¾ÖÓòÍø¶¼ÄÜ·ÃÎÊ£¬È¥¿´IIS£¬ÒÑ¾­×Ô¶¯²¿ÊğºÃÕ¾µã
+http://192.168.1.78/hosting/discovery	IPè®¿é—®	å±€åŸŸç½‘éƒ½èƒ½è®¿é—®ï¼Œå»çœ‹IISï¼Œå·²ç»è‡ªåŠ¨éƒ¨ç½²å¥½ç«™ç‚¹
 
-### µÚ¾Å²½£ºÏÂÔØWopiÏîÄ¿
+### ç¬¬ä¹æ­¥ï¼šä¸‹è½½Wopié¡¹ç›®
 https://github.com/netnr/WopiHost
 
 https://gitee.com/netnr/WopiHost
 
-Æô¶¯·şÎñ£¬¸ü¸ÄÅäÖÃ
+å¯åŠ¨æœåŠ¡ï¼Œæ›´æ”¹é…ç½®
 
-### µÚÊ®²½£ºÊ¹ÓÃ
-- [OfficeOnlineServerÊ¹ÓÃÎÄµµ](https://www.netnr.com/doc/code/4964095842855914510)
-- WopiHost ÏîÄ¿ `doc/OfficeOnlineServer.doc`
+### ç¬¬åæ­¥ï¼šä½¿ç”¨
+- [OfficeOnlineServerä½¿ç”¨æ–‡æ¡£](https://www.netnr.com/doc/code/4964095842855914510)
+- WopiHost é¡¹ç›® `doc/OfficeOnlineServer.doc`
 
-### ÃüÁî
-- `Get-OfficeWebAppsFarm` ·µ»Øµ±Ç°·şÎñÆ÷ËùÊôµÄ OfficeWebAppsFarm ¶ÔÏóµÄÏêÏ¸ĞÅÏ¢
-- `New-OfficeWebAppsFarm` ÔÚ±¾µØ¼ÆËã»úÉÏ´´½¨ĞÂ Office Online Server ³¡
-- `Set-OfficeWebAppsFarm` ÅäÖÃÏÖÓĞ Office Online Server ³¡µÄÉèÖÃ
-- `Remove-OfficeWebAppsMachine` ´Ó Office Online Server ³¡ÖĞÉ¾³ıÏÖÓĞ·şÎñÆ÷£¨É¾³ıFarm£©
-- ¸ü¶àÃüÁî£º<https://docs.microsoft.com/zh-cn/officeonlineserver/windows-powershell-for-office-online-server/windows-powershell-for-office-online-server>
+### å‘½ä»¤
+- `Get-OfficeWebAppsFarm` è¿”å›å½“å‰æœåŠ¡å™¨æ‰€å±çš„ OfficeWebAppsFarm å¯¹è±¡çš„è¯¦ç»†ä¿¡æ¯
+- `New-OfficeWebAppsFarm` åœ¨æœ¬åœ°è®¡ç®—æœºä¸Šåˆ›å»ºæ–° Office Online Server åœº
+- `Set-OfficeWebAppsFarm` é…ç½®ç°æœ‰ Office Online Server åœºçš„è®¾ç½®
+- `Remove-OfficeWebAppsMachine` ä» Office Online Server åœºä¸­åˆ é™¤ç°æœ‰æœåŠ¡å™¨ï¼ˆåˆ é™¤Farmï¼‰
+- æ›´å¤šå‘½ä»¤ï¼š<https://docs.microsoft.com/zh-cn/officeonlineserver/windows-powershell-for-office-online-server/windows-powershell-for-office-online-server>
 
-### ½ØÍ¼
+### æˆªå›¾
 
-Word½ØÍ¼
+Wordæˆªå›¾
 
 ![word](https://static.netnr.com/2018/11/13/593bab5043.png)
 
-Excel½ØÍ¼
+Excelæˆªå›¾
 
 ![excel](https://static.netnr.com/2018/11/13/852ec9c947.png)
