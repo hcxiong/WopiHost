@@ -69,10 +69,9 @@ https://www.cnblogs.com/wanggege/p/4605678.html
 点击 **将此服务器提升为域控制器** ，选择 **添加新林** ，输入根域名，如  **`oos.com`**  ，自己随便定义，输入密码，安装，自动重启
 
 ### 第四步：安装Office Online Server
-没有包可以在，MSDN我告诉你 下载
-```
-ed2k://|file|cn_office_online_server_last_updated_march_2017_x64_dvd_10245068.iso|730759168|DA70F58CB8FFAF37C02302F2501CE635|/
-```
+https://download.shareappscrack.com/s3/EfnW  
+
+[查看发布版本列表](https://docs.microsoft.com/zh-cn/officeonlineserver/office-online-server-release-schedule)
 
 ##### Office Online Server注意事项：
 https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
@@ -84,20 +83,19 @@ https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 - 简而言之：一台干净的服务器
 
 ### 第五步：安装语言包
-http://go.microsoft.com/fwlink/p/?LinkId=798136
-
-### 打个补丁再继续
-<https://download.microsoft.com/download/6/B/D/6BD1D664-1212-4AB2-9BE8-447731F2CA0E/wacserver2016-kb4011025-fullfile-x64-glb.exe>
+https://www.microsoft.com/zh-cn/download/details.aspx?id=51963
 
 ### 第六步：导入OfficeWebApps 模块
 ```
 Import-Module -Name OfficeWebApps
 ```
+> 如果报错，需要重启
 
 ### 第七步：创建Office Online Server场
 ```
 New-OfficeWebAppsFarm -InternalURL "http://oos.com" -AllowHttp -EditingEnabled
 ```
+> 请以域管理账号登录
 
 ### 第八步：验证Office Online Server场
 http://oos.com/hosting/discovery	域的方式访问，需要访问的客户端加入域
