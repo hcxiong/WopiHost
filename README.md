@@ -68,11 +68,6 @@ https://www.cnblogs.com/wanggege/p/4605678.html
 添加角色和功能，选择 **Active Directory 域服务** 安装，等待完成，不要关闭，
 点击 **将此服务器提升为域控制器** ，选择 **添加新林** ，输入根域名，如  **`oos.com`**  ，自己随便定义，输入密码，安装，自动重启
 
-### 第四步：安装Office Online Server
-https://download.shareappscrack.com/s3/EfnW  
-
-[查看发布版本列表](https://docs.microsoft.com/zh-cn/officeonlineserver/office-online-server-release-schedule)
-
 ##### Office Online Server注意事项：
 https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 
@@ -82,8 +77,22 @@ https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 - 不要在域控制器上安装 Office Online Server
 - 简而言之：一台干净的服务器
 
+### 第四步：安装Office Online Server
+
 ### 第五步：安装语言包
-https://www.microsoft.com/zh-cn/download/details.aspx?id=51963
+
+##### 版本号：16.0.8471.8525
+安装包：`ed2k://|file|cn_office_online_server_last_updated_march_2017_x64_dvd_10245068.iso|730759168|DA70F58CB8FFAF37C02302F2501CE635|/`  
+补丁包：<https://download.microsoft.com/download/6/B/D/6BD1D664-1212-4AB2-9BE8-447731F2CA0E/wacserver2016-kb4011025-fullfile-x64-glb.exe>  
+语言包：<http://go.microsoft.com/fwlink/p/?LinkId=798136>
+
+##### 版本号：16.0.10338.20039
+安装包：<https://download.shareappscrack.com/s3/EfnW>  
+语言包：<https://www.microsoft.com/zh-cn/download/details.aspx?id=51963>
+
+[所有版本列表](https://docs.microsoft.com/zh-cn/officeonlineserver/office-online-server-release-schedule)
+
+> 经测试，推荐安装版本号：16.0.8471.8525
 
 ### 第六步：导入OfficeWebApps 模块
 ```
