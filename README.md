@@ -66,7 +66,11 @@ https://go.microsoft.com/fwlink/p/?LinkId=620072
 https://www.cnblogs.com/wanggege/p/4605678.html
 
 添加角色和功能，选择 **Active Directory 域服务** 安装，等待完成，不要关闭，
-点击 **将此服务器提升为域控制器** ，选择 **添加新林** ，输入根域名，如  **`oos.com`**  ，自己随便定义，输入密码，安装，自动重启
+点击 **将此服务器提升为域控制器** ，选择 **添加新林** ，输入根域名，如  **`oos.com`**  ，自己随便定义，输入密码，安装，自动重启，域服务已安装成
+
+加入域，修改客户机 DNS 为 域服务器的IP地址，再修改工作组为域的方式
+
+> 由于云服务器是克隆副本，加入域会报错：`无法完成域加入，原因是试图加入的域的 SID 与本计算机的 SID 相同`，解决方法，打开：`windows/System32/Sysprep/Sysprep.exe`，勾选 **通用** 重启
 
 ##### Office Online Server注意事项：
 https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
@@ -102,7 +106,7 @@ Import-Module -Name OfficeWebApps
 
 ### 第七步：创建Office Online Server场
 ```
-New-OfficeWebAppsFarm -InternalURL "http://oos.com" -AllowHttp -EditingEnabled
+New-OfficeWebAppsFarm -InternalURL "http://001.oos.com" -AllowHttp -EditingEnabled
 ```
 > 请以域管理账号登录
 
