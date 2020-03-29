@@ -133,6 +133,7 @@ https://gitee.com/netnr/WopiHost
 - `New-OfficeWebAppsFarm` 在本地计算机上创建新 Office Online Server 场
 - `Set-OfficeWebAppsFarm` 配置现有 Office Online Server 场的设置
 - `Remove-OfficeWebAppsMachine` 从 Office Online Server 场中删除现有服务器（删除Farm）
+- `New-OfficeWebAppsHost` 将主机域添加到 Office Online Server 服务器场的允许列表中（群友测试，重启生效）
 - 更多命令：<https://docs.microsoft.com/zh-cn/officeonlineserver/windows-powershell-for-office-online-server/windows-powershell-for-office-online-server>
 
 ### 截图
