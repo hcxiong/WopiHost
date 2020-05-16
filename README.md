@@ -91,8 +91,10 @@ https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 语言包：<http://go.microsoft.com/fwlink/p/?LinkId=798136>
 
 ##### 版本号：16.0.10338.20039
-安装包：<https://download.shareappscrack.com/s3/EfnW>  
+安装包：<http://dl.downloadly.ir/Files/Software2/Microsoft_Office_Online_Server_Updated_November_2018_x64_MSDN_Downloadly.ir.rar>  
 语言包：<https://www.microsoft.com/zh-cn/download/details.aspx?id=51963>
+
+搜补丁：<http://www.catalog.update.microsoft.com/Search.aspx?q=Office%20Online%20Server>  
 
 [所有版本列表](https://docs.microsoft.com/zh-cn/officeonlineserver/office-online-server-release-schedule)
 
@@ -134,6 +136,8 @@ https://gitee.com/netnr/WopiHost
 - `Set-OfficeWebAppsFarm` 配置现有 Office Online Server 场的设置
 - `Remove-OfficeWebAppsMachine` 从 Office Online Server 场中删除现有服务器（删除Farm）
 - `New-OfficeWebAppsHost` 将主机域添加到 Office Online Server 服务器场的允许列表中（群友测试，重启生效）
+    - 尝试仅重启服务而不重启系统（待验证，如果有效请记得反馈哦）：`Restart-Service WACSM` 或 `services.msc` 里面
+
 - 更多命令：<https://docs.microsoft.com/zh-cn/officeonlineserver/windows-powershell-for-office-online-server/windows-powershell-for-office-online-server>
 
 ### 截图
