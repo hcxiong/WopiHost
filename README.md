@@ -91,7 +91,8 @@ https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 语言包：<http://go.microsoft.com/fwlink/p/?LinkId=798136>
 
 ##### 版本号：16.0.10338.20039
-安装包：<http://dl.downloadly.ir/Files/Software2/Microsoft_Office_Online_Server_Updated_November_2018_x64_MSDN_Downloadly.ir.rar>  
+资源页：<https://downloadly.ir/software/network-server/microsoft-office-online-server-1>
+安装包：<https://dl.downloadly.ir/Files/Software2/Microsoft_Office_Online_Server_Updated_November_2018_x64_MSDN_Downloadly.ir.rar>  
 语言包：<https://www.microsoft.com/zh-cn/download/details.aspx?id=51963>
 
 搜补丁：<http://www.catalog.update.microsoft.com/Search.aspx?q=Office%20Online%20Server>  
@@ -124,7 +125,7 @@ https://github.com/netnr/WopiHost
 
 https://gitee.com/netnr/WopiHost
 
-启动服务，更改配置
+部署到IIS（4.0），更改配置，启动服务
 
 ### 第十步：使用
 - [OfficeOnlineServer使用文档](https://www.netnr.com/doc/code/4964095842855914510)
