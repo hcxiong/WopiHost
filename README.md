@@ -91,7 +91,7 @@ https://docs.microsoft.com/zh-cn/officeonlineserver/plan-office-online-server
 语言包：<http://go.microsoft.com/fwlink/p/?LinkId=798136>
 
 ##### 版本号：16.0.10338.20039
-资源页：<https://downloadly.ir/software/network-server/microsoft-office-online-server-1>
+资源页：<https://downloadly.ir/software/network-server/microsoft-office-online-server-1>  
 安装包：<https://dl.downloadly.ir/Files/Software2/Microsoft_Office_Online_Server_Updated_November_2018_x64_MSDN_Downloadly.ir.rar>  
 语言包：<https://www.microsoft.com/zh-cn/download/details.aspx?id=51963>
 
