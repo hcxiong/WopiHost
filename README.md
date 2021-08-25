@@ -143,8 +143,8 @@ https://github.com/netnr/WopiHost
 
 Word截图
 
-![word](https://static.netnr.com/2018/11/13/593bab5043.png)
+![word](https://s1.netnr.eu.org/2018/11/13/593bab5043.png)
 
 Excel截图
 
-![excel](https://static.netnr.com/2018/11/13/852ec9c947.png)
+![excel](https://s1.netnr.eu.org/2018/11/13/852ec9c947.png)
